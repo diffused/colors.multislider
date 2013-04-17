@@ -1,7 +1,9 @@
 #colors.multislider 
-A multiple range slider ideally suited for ratio selection of a color palette. 
+Multiple range slider jQueryUI plugin, ideally suited for ratio selection of a color palette. 
 
-jQueryUI plugin extending the Slider widget.
+Extends the Slider widget.
+
+See a [demo in jsfiddle](http://jsfiddle.net/diffused/p3Q65/)
 
 ##Features
 
