@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<title>colors.multislider demo</title>
+
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>		
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" />
+
+		<script src="colors.multislider.js"></script>
+		<link href="colors.multislider.css" rel="stylesheet" />
+
+		<style>
+			body { font-family: 'Noto Sans', sans-serif; color:#333; }			
+
+			.colorbox {
+				display:table;
+				line-height:1; 
+				vertical-align: baseline;
+				margin:0; padding:0;
+				border-collapse: separate;
+			  border-spacing: 0;	
+			}
+
+			.colorbox_row {
+				margin:0;
+				line-height:1; 
+				display:table-row;
+			}
+				
+			.colorbox_cell {
+				line-height:1; 
+				border-spacing: 0;
+				display:table-cell;		
+				width: 30px; 
+				height: 30px;
+				margin:0;
+				padding:0;	
+				border-collapse:collapse;
+			}
+
+			.colorbox_cell:hover {	
+				box-sizing:border-box;
+			  -moz-box-sizing:border-box;
+			  -webkit-box-sizing:border-box;
+				border:1px solid #eee;
+			}
+
+			#vertical_palette_strip { width: 100px;  display: inline-block;}
+			#multi_slider_vertical { width: 50px; height:570px; display: inline-block;}
+		</style>
+
+	</head>
+	<body>
+		<h1>colors.multislider</h1>
+
+
+		<div id="vertical_demo">
+			<p>Click a color from the left</p>
+			<p>Up to 5 colors can be added to the slider</p>
+			<p>Drag that slider</p>
+
+
+			<div id="vertical_palette_strip"><div class="colorbox"><div class="colorbox_row"><div class="colorbox_cell" data-color="#e73864" style="background-color:#e73864;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#cb4e8e" style="background-color:#cb4e8e;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#a26096" style="background-color:#a26096;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#7e619a" style="background-color:#7e619a;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#5d629c" style="background-color:#5d629c;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#4b669f" style="background-color:#4b669f;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#5486be" style="background-color:#5486be;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#6cbdd5" style="background-color:#6cbdd5;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#75baa2" style="background-color:#75baa2;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#73b15b" style="background-color:#73b15b;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#80b74d" style="background-color:#80b74d;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#b4c93e" style="background-color:#b4c93e;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#f6d728" style="background-color:#f6d728;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#f68e2c" style="background-color:#f68e2c;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#e84b34" style="background-color:#e84b34;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#e73844" style="background-color:#e73844;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#ffffff" style="background-color:#ffffff;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#999999" style="background-color:#999999;"></div></div><div class="colorbox_row"><div class="colorbox_cell" data-color="#000000" style="background-color:#000000;"></div></div></div></div>
+
+			<div id="multi_slider_vertical"></div>			
+		</div>
+		
+		<script>
+		$(function(){			
+
+			$('#multi_slider_vertical').multislider({
+				orientation: "vertical",
+				min: 0,
+	    	max: 100,    	
+	    	values: [66],	    	
+	    	selected_colors: ["#3071a7", '#513075'],
+	    	color_added: function(event, color) { 	    		
+	    	},
+	    	color_deleted: function(event, color) {	    		
+	    	},
+	    	stop: function(event, ui) {
+	    		// on release of slider 	    		
+	    	}
+			});
+
+
+			// click a color in that colorful strip and add it to the slider
+			$('#vertical_palette_strip .colorbox_cell').click(function(e){
+				var color = $(e.target).data('color');
+				$('#multi_slider_vertical').multislider('add_color', color);
+			});
+		});
+
+		
+			
+		function log(m) { console.log(m); }
+		</script>
+	
+	</body>
+</html>
